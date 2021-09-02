@@ -6,6 +6,8 @@ public class moveLevels : MonoBehaviour
 {
     protected bool moveEnabled;
 
+    public float speed = 10f;
+
     private void Start()
     {
         moveEnabled = true;
@@ -24,12 +26,13 @@ public class moveLevels : MonoBehaviour
                 moveEnabled = true;
             }
         }
+
     }
     void FixedUpdate()
     {
         if (moveEnabled)
         {
-            transform.Translate(new Vector3(0, 0, -10) * Time.deltaTime);
+            transform.Translate(new Vector3(0, 0, -speed-(destroyLevel.sum/10)) * Time.deltaTime);
         }
     }
 }

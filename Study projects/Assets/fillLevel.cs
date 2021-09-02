@@ -16,7 +16,16 @@ public class fillLevel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        randomAmount = Random.Range(0, 2);
+        var ranfCH = Random.Range(0, 99);
+        if (ranfCH <= 10)
+        {
+            randomAmount = 0;
+        } else if (ranfCH <= 50 && ranfCH > 10){
+            randomAmount = 1;
+        } else if (ranfCH > 50)
+        {
+            randomAmount = 1;
+        }
         SpawnObjects();
     }
 
@@ -36,6 +45,7 @@ public class fillLevel : MonoBehaviour
 
         while (randomAmount > 0)
         {
+
             int objectIndex = Random.Range(0, objects.Count);
             int pointIndex = Random.Range(0, points.Count);
 

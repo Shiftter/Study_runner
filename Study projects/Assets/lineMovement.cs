@@ -44,26 +44,25 @@ public class lineMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        Vector3 point = transform.position;
 
-        if (linePos==1)
+        switch (linePos)
         {
-            Vector3 point = transform.position;
-            point.x = lineLeftPos;
-            rb.position = Vector3.Lerp(transform.position, point, smooth * Time.deltaTime);
-        }
+            case 1:
+                
+                point.x = lineLeftPos;
+                rb.position = Vector3.Lerp(transform.position, point, smooth * Time.deltaTime);
+                break;
 
-        if (linePos==2)
-        {
-            Vector3 point = transform.position;
-            point.x = lineCenterPos;
-            rb.position = Vector3.Lerp(transform.position, point, smooth * Time.deltaTime);
-        }
-        
-        if (linePos==3)
-        {
-            Vector3 point = transform.position;
-            point.x = lineRightPos;
-            rb.position = Vector3.Lerp(transform.position, point, smooth * Time.deltaTime);
+            case 2:
+                point.x = lineCenterPos;
+                rb.position = Vector3.Lerp(transform.position, point, smooth * Time.deltaTime);
+                break;
+
+            case 3:
+                point.x = lineRightPos;
+                rb.position = Vector3.Lerp(transform.position, point, smooth * Time.deltaTime);
+                break;
         }
 
         if (doJump&&rb.transform.position.y<=0)

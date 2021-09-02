@@ -9,10 +9,20 @@ public class restartLevel : MonoBehaviour
     public moveLevels moveL;
     public float levelRestartDelay = 1f;
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Wall")
+        {
+            EndGame();
+
+            Debug.Log("Hit Something");
+        }
+    }
     public void EndGame()
     {
         moveP.enabled = false;
         moveL.enabled = false;
+        destroyLevel.sum = 0;
         Invoke("RestartLevel", levelRestartDelay);
     }
 
