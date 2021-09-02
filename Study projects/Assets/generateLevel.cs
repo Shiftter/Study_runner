@@ -5,15 +5,30 @@ using UnityEngine;
 public class generateLevel : MonoBehaviour
 {
     public GameObject Prefabs;
-    public Collider Trigger;
+    public GameObject genPoint;
+
+    protected bool next = false;
 
     // Update is called once per frame
-    void OnTriggerEnter (Collider collider)
+    void OnTriggerEnter(Collider col)
     {
 
-        if(collider.tag == "Player")
+        if(col.gameObject.tag != "floor")
         {
-            Instantiate(Prefabs, Trigger.transform.position + Vector3.forward * 30, Quaternion.identity);
+            Debug.Log("Generate");
+            Instantiate(Prefabs, genPoint.transform.position, Quaternion.identity);
+
+            next = true;
         }
     }
+
+    void Update()
+    {
+        if (next)
+        {
+            genPoint.transform.Translate(0, 0, 75);
+            next = false;
+        }
+    }
+
 }
