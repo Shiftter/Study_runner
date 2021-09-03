@@ -10,8 +10,6 @@ public class deadPlayer : MonoBehaviour
         if(collision.collider.tag == "Wall")
         {
             rm.EndGame();
-
-            Debug.Log("Hit Something");
         }
     }
 }

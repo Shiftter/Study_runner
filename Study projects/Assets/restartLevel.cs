@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class restartLevel : MonoBehaviour
 {
     public lineMovement moveP;
-    public moveLevels moveL;
+    public destroyLevel moveL;
     public float levelRestartDelay = 1f;
 
     void OnCollisionEnter(Collision collision)
@@ -21,8 +21,8 @@ public class restartLevel : MonoBehaviour
     public void EndGame()
     {
         moveP.enabled = false;
-        moveL.enabled = false;
-        destroyLevel.sum = 0;
+        moveL.sum = 0;
+        moveL.moveEnabled = false;
         Invoke("RestartLevel", levelRestartDelay);
     }
 
